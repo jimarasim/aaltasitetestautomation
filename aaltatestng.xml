@@ -1,0 +1,12 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="AaltaTest" verbose="1"  parallel="classes" thread-count="2">
+    <test name="Regression1" preserve-order="false">
+        <classes>
+
+            <class name="io.aalta.Tests.HomeVerifyElementsTest" />
+            <class name="io.aalta.Tests.HomeFillOutFormNoCaptchcaTest" />
+
+        </classes>
+    </test>
+</suite>
