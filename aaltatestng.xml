@@ -2,6 +2,8 @@
 
 <suite name="AaltaTest" verbose="1"  parallel="classes" thread-count="2">
     <test name="Regression1" preserve-order="false">
+
+        <parameter name="browser" value="CHROME" />
         <classes>
 
             <class name="io.aalta.Tests.HomeVerifyElementsTest" />
