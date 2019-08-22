@@ -21,6 +21,6 @@ public class HomeFillOutFormNoCaptchcaTest extends BaseTest
         homePage.filloutName("James").filloutEmail("james@aalta.io").filloutMessage("Filling out the form");
         homePage.clickSendButton().waitForErrorMessage();
 
-        Assert.assertTrue(homePage.isTextOnPage("The Captcha field cannot be blank."));
+        Assert.assertTrue(homePage.isTextOnPage("The Captcha field cannot be blanka."));
     }
 }

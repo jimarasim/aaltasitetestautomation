@@ -3,6 +3,7 @@ package io.aalta.Common;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.Assert;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -14,13 +15,17 @@ import java.util.logging.Level;
 
 public class BaseTest {
     protected WebDriver driver = null;
-    protected BrowserEnum browser = BrowserEnum.CHROME;
+    protected BrowserEnum browser;
 
     @Parameters("browser")
     @BeforeMethod(alwaysRun = true)
     public void BeforeTest(@Optional("CHROME") String browser) throws Exception{
         //set desired browser
-        this.browser = BrowserEnum.valueOf(browser);
+        try {
+            this.browser = BrowserEnum.valueOf(browser);
+        } catch (IllegalArgumentException ex) {
+           Assert.fail("INVALID BROWSER VALUE PASSED:" + browser);
+        }
 
         //Before each test, start the browser and assign the driver to it
         driver = StartDriver();
@@ -28,9 +33,18 @@ public class BaseTest {
 
     @AfterMethod(alwaysRun = true)
     public void AfterTest(ITestResult testResult){
+
+        //take a screenshot on failure
+        if(!testResult.isSuccess()) {
+            String screenshotFileName = Utilities.screenShot(driver,testResult.getInstanceName());
+            System.out.println("TEST FAILURE SCREENSHOT TAKEN:" + screenshotFileName);
+        }
+
         //After each test, close the browser and destroy the browser
-        driver.quit();
-        driver = null;
+        if(driver != null) {
+            driver.quit();
+            driver = null;
+        }
     }
 
     private WebDriver StartDriver() throws Exception{
