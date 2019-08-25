@@ -3,6 +3,7 @@ package io.aalta.Common;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.safari.SafariDriver;
 import org.testng.Assert;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
@@ -10,8 +11,6 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 
-import java.io.PrintWriter;
-import java.util.logging.Level;
 
 public class BaseTest {
     protected WebDriver driver = null;
@@ -19,7 +18,7 @@ public class BaseTest {
 
     @Parameters("browser")
     @BeforeMethod(alwaysRun = true)
-    public void BeforeTest(@Optional("CHROME") String browser) throws Exception{
+    public void BeforeTest(@Optional("CHROME") String browser) {
         //set desired browser
         try {
             this.browser = BrowserEnum.valueOf(browser);
@@ -47,7 +46,7 @@ public class BaseTest {
         }
     }
 
-    private WebDriver StartDriver() throws Exception{
+    private WebDriver StartDriver() {
         WebDriver driverToLaunch = null;
 
         if(browser == BrowserEnum.CHROME) {
@@ -64,6 +63,8 @@ public class BaseTest {
 
             //create the driver.
             driverToLaunch = new FirefoxDriver();
+        } else if (browser == BrowserEnum.SAFARI) {
+            driverToLaunch = new SafariDriver();
         }
 
         return driverToLaunch;
