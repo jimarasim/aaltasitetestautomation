@@ -1,13 +1,63 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
 <suite name="AaltaTest" verbose="1"  parallel="classes" thread-count="2">
-    <test name="Regression1" preserve-order="false">
+    <test name="Aalta Safari Mac" preserve-order="false">
 
+        <parameter name="browser" value="BROWSERSTACK_SAFARI_IPHONE" />
         <classes>
 
             <class name="io.aalta.Tests.HomeVerifyElementsTest" />
             <class name="io.aalta.Tests.HomeFillOutFormNoCaptchcaTest" />
 
         </classes>
+
     </test>
+<!--    <test name="Aalta Chrome Mac" preserve-order="false">-->
+
+<!--        <parameter name="browser" value="BROWSERSTACK_CHROME_MAC" />-->
+<!--        <classes>-->
+
+<!--            <class name="io.aalta.Tests.HomeVerifyElementsTest" />-->
+<!--            <class name="io.aalta.Tests.HomeFillOutFormNoCaptchcaTest" />-->
+
+<!--        </classes>-->
+
+<!--    </test>-->
+
+<!--    <test name="Aalta Firefox Mac" preserve-order="false">-->
+
+<!--    <parameter name="browser" value="BROWSERSTACK_FIREFOX_MAC" />-->
+<!--    <classes>-->
+
+<!--        <class name="io.aalta.Tests.HomeVerifyElementsTest" />-->
+<!--        <class name="io.aalta.Tests.HomeFillOutFormNoCaptchcaTest" />-->
+
+<!--    </classes>-->
+
+<!--    </test>-->
+
+<!--    <test name="Aalta Chrome Windows" preserve-order="false">-->
+
+<!--    <parameter name="browser" value="BROWSERSTACK_CHROME_WINDOWS" />-->
+<!--    <classes>-->
+
+<!--        <class name="io.aalta.Tests.HomeVerifyElementsTest" />-->
+<!--        <class name="io.aalta.Tests.HomeFillOutFormNoCaptchcaTest" />-->
+
+<!--    </classes>-->
+
+<!--</test>-->
+
+<!--    <test name="Aalta Firefox Windows" preserve-order="false">-->
+
+<!--        <parameter name="browser" value="BROWSERSTACK_FIREFOX_WINDOWS" />-->
+<!--        <classes>-->
+
+<!--            <class name="io.aalta.Tests.HomeVerifyElementsTest" />-->
+<!--            <class name="io.aalta.Tests.HomeFillOutFormNoCaptchcaTest" />-->
+
+<!--        </classes>-->
+
+<!--    </test>-->
+
 </suite>
